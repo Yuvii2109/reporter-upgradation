@@ -42,7 +42,6 @@ HTML_TEMPLATE = """
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #1e293b; -webkit-print-color-adjust: exact; }
         .report-section { background: #ffffff; margin-bottom: 3rem; overflow: hidden; border: 1px solid #f1f5f9; border-radius: 1.5rem; }
         .text-navy { color: #0c4a6e; }
-        /* Reverted to the original professional gradient */
         .hero-gradient { background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%); }
         .chart-bar-bg { background-color: #f1f5f9; border-radius: 9999px; height: 1.5rem; width: 100%; overflow: hidden; position: relative; }
         .chart-bar-fill { height: 100%; border-radius: 9999px; }
@@ -70,30 +69,6 @@ HTML_TEMPLATE = """
                 <p class="opacity-80 pt-2">www.edxso.com</p>
             </div>
         </header>
-
-        <section id="executive-summary" class="report-section">
-            <div class="p-10 md:p-12">
-                <div class="flex items-center gap-3 mb-8 border-b border-gray-50 pb-6">
-                    <span class="p-2 bg-blue-50 rounded-lg">
-                        <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </span>
-                    <h2 class="text-3xl font-bold text-navy uppercase tracking-tight">Executive Summary</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-10">
-                    <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
-                        <p>[EXEC_SUMMARY_P1]</p>
-                        <p>[EXEC_SUMMARY_P2]</p>
-                    </div>
-                    <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
-                        <p class="font-semibold text-navy">[EXEC_SUMMARY_KEY_FINDING]</p>
-                        <p>[EXEC_SUMMARY_CONCLUSION]</p>
-                    </div>
-                </div>
-                <div class="p-8 border-l-4 border-blue-600 mb-12 italic text-gray-600 bg-slate-50/50 text-xl rounded-r-xl">
-                    "Behind every exam score is a student navigating unseen emotional pressures."
-                </div>
-            </div>
-        </section>
 
         <section id="overview" class="report-section p-10 md:p-12">
             <div class="flex flex-col md:flex-row gap-12">
@@ -153,6 +128,26 @@ HTML_TEMPLATE = """
             </div>
             <div class="mt-12 p-6 bg-slate-50 rounded-xl text-gray-500 text-sm">
                 <p>Note: Participation was anonymous. Scoring logic was applied strictly without subjective interpretation.</p>
+            </div>
+        </section>
+
+        <section id="executive-summary" class="report-section">
+            <div class="p-10 md:p-12">
+                <div class="flex items-center gap-3 mb-8 border-b border-gray-50 pb-6">
+                    <span class="p-2 bg-blue-50 rounded-lg">
+                        <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </span>
+                    <h2 class="text-3xl font-bold text-navy uppercase tracking-tight">Executive Summary</h2>
+                    <span class="ml-auto px-4 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-bold tracking-widest uppercase border border-blue-100">
+                        Profile: [RISK_BAND_LABEL]
+                    </span>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm text-gray-700 leading-relaxed text-lg space-y-6">
+                    <p>[EXEC_SUMMARY_PARAGRAPH_1]</p>
+                    <p>[EXEC_SUMMARY_PARAGRAPH_2]</p>
+                    <p>[EXEC_SUMMARY_PARAGRAPH_3]</p>
+                </div>
             </div>
         </section>
 
@@ -281,23 +276,17 @@ HTML_TEMPLATE = """
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="p-10 border border-blue-50 rounded-2xl bg-blue-50/20">
-                <h3 class="text-2xl font-bold text-navy mb-6">Interpretation & Insights</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="space-y-4">
-                        <div class="p-4 bg-white rounded-xl">
-                            <h4 class="text-green-700 font-bold flex items-center gap-2 mb-2">Strengths vs. National Trend</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">[INSIGHT_STRENGTHS]</p>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="p-4 bg-white rounded-xl">
-                            <h4 class="text-orange-700 font-bold flex items-center gap-2 mb-2">Points of Intervention</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">[INSIGHT_WEAKNESS]</p>
-                        </div>
-                    </div>
-                </div>
+        <section id="next-steps" class="report-section p-10 md:p-12 border-t border-slate-100">
+            <h2 class="text-3xl font-bold text-navy mb-6 uppercase tracking-tighter">Next Step</h2>
+            <div class="p-8 bg-blue-50/40 rounded-2xl border border-blue-100">
+                <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                    The data highlights both strengths and opportunities. A focused well-being strategy can meaningfully reduce moderate-to-severe stress levels.
+                </p>
+                <p class="font-semibold text-navy text-lg">
+                    We welcome a leadership discussion to translate these insights into structured, measurable student support initiatives.
+                </p>
             </div>
         </section>
 
@@ -380,46 +369,61 @@ def create_monogram_fallback(school_name):
     return f"data:image/png;base64,{data}"
 
 def generate_insights_with_gemini(api_key, stats, school_name):
+    # 1. THE LOGIC MATRIX: DIPLOMATIC ECOSYSTEM PROFILES
+    high_severe = stats['pct_high'] + stats['pct_severe']
+    moderate = stats['pct_moderate']
+    low_band = stats['pct_balanced'] + stats['pct_mild']
+    
+    # Keep the diplomatic profiling
+    if high_severe >= 20:
+        risk_band = "Priority Support Area"
+    elif high_severe >= 15 and low_band >= 40:
+        risk_band = "Divergent Ecosystem"
+    elif high_severe >= 10 or moderate >= 40:
+        risk_band = "Elevated Pressure Zone"
+    elif high_severe >= 5 or moderate >= 30:
+        risk_band = "Proactive Monitoring"
+    else:
+        risk_band = "Balanced Ecosystem"
+
     if not api_key:
         return {
-            "p1": "The students exhibited a diverse range of emotional responses.",
-            "p2": "Detailed analysis suggests that while some students possess robust coping mechanisms, a notable segment requires targeted intervention.",
-            "key_finding": "Moderate Correlation between Preparation and Panic.",
-            "conclusion": "Implementing structured mentorship programs is recommended.",
-            "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
-            "strengths": f"Support Accessibility score of {stats['support_pct']:.1f}% indicates positive interaction.",
-            "weaknesses": f"Exam anxiety is recorded at {stats['anxiety_pct']:.1f}%."
+            "risk_band_label": risk_band,
+            "p1": "Students today face an evolving landscape of academic expectations, and the data reflects the natural emotional responses to these nationwide trends.",
+            "p2": "We recognize that the institution is already exercising immense care in supporting its students. However, many of the pressures students absorb—such as societal competition and parental expectations—stem from external factors that are often outside the school's direct control.",
+            "p3": "Looking forward, there is a wonderful opportunity to partner together. By providing students with tailored advice and coping strategies, we can empower them to navigate these external pressures with confidence and joy."
         }
     
     try:
         client = genai.Client(api_key=api_key)
         prompt = f"""
-        ROLE: You are an Expert Education Data Analyst with a calm, professional, and clinical demeanor. You transform complex data into clear, narrative-driven insights. You have a deep understanding of student psychology and the nuances of stress related to academic assessments. Your tone is polite, empathetic yet authoritative, providing guidance that is grounded in evidence.
+        ROLE: You are an Elite Education Strategy Consultant writing an Executive Summary for School Leadership. 
+        Your tone must be highly diplomatic, professional, respectful, and empowering. 
 
-        CRITICAL INSTRUCTION: You MUST weave the provided statistics directly into the narrative of the executive summary. Do not simply list numbers; integrate them seamlessly into sentences, making sure to explicitly compare school data against National (Nat) averages where provided.
-
-        TASK: Write an analytical report section for School: "{school_name}".
-
-        DATA:
-        - Total Students: {stats['count']}
-        - Balanced: {stats['pct_balanced']}%
-        - Mild: {stats['pct_mild']}%
+        SCHOOL CONTEXT:
+        - School Name: {school_name}
+        - Total Sample: {stats['count']} students
+        - Ecosystem Profile: {risk_band}
+        
+        RAW DATA (TRANSLATE TO MEANING, AVOID EXACT PERCENTAGES):
+        - Balanced/Mild: {stats['pct_balanced'] + stats['pct_mild']}%
         - Moderate: {stats['pct_moderate']}%
-        - High: {stats['pct_high']}%
-        - Severe: {stats['pct_severe']}%
-        - Anxiety: {stats['anxiety_pct']}% (Nat: 81%)
-        - Pressure: {stats['parent_pressure_pct']}% (Nat: 66%)
-        - Support: {stats['support_pct']}% (Nat: 28%)
+        - High/Severe: {stats['pct_high'] + stats['pct_severe']}%
+        - Exam Anxiety: {stats['anxiety_pct']}% (Nat Benchmark: 81%)
+        - Parental Pressure: {stats['parent_pressure_pct']}% (Nat Benchmark: 66%)
+
+        FIRM OUTPUT GUARDRAILS (STRICT COMPLIANCE REQUIRED):
+        1. ZERO BLAME OR AUTHORITY: Never imply the school is at fault. 
+        2. THE "EXTERNAL FACTOR" RULE: You MUST explicitly state that the stress students face is part of a broader, nationwide trend and stems from external factors (societal competition, parental expectations) that are outside the school's direct control. 
+        3. VALIDATE THE INSTITUTION: Acknowledge that the school is undoubtedly putting in strong effort to support its students.
+        4. STRATEGIC POSITIONING: Do not offer EDXSO's direct counseling services. Position the insights as an opportunity for the school itself to lead and differentiate its brand through systemic enhancements.
+        5. FORMAT: Output three professionally written, flowing paragraphs. No bullet points.
 
         OUTPUT FORMAT (JSON):
         {{
-            "p1": "Executive Summary P1 (Approx 40-60 words). State the school name, total students assessed, and summarize the emotional category distribution. Specifically contrast the 'Balanced' percentage against the 'High' and 'Severe' percentages to establish the baseline need.",
-            "p2": "Executive Summary P2 (Approx 50-70 words). Compare the school's Anxiety and Pressure percentages to their National (Nat) averages. Then, mention the Support percentage compared to its National benchmark, framing it as a foundation for interventions.",
-            "key_finding": "Key Finding Headline summarizing the primary emotional concern (Max 10 words).",
-            "conclusion": "Executive Summary P3 / Conclusion (Approx 40-50 words). Synthesize the findings from p1 and p2 into an actionable takeaway. Call for focused, holistic well-being strategies based on the concentration of high/severe stress.",
-            "quote": "A very positive, motivational, optimistic, and inspirational quote relevant to student well-being.",
-            "strengths": "Insight on Strengths based on the data, such as support levels (Max 40 words).",
-            "weaknesses": "Insight on Points of Intervention based on the data (Max 40 words)."
+            "p1": "Paragraph 1: Introduce the general landscape of student well-being today, weaving in the school's specific data profile. Start directly and professionally. Frame the data as a helpful snapshot of the current student reality.",
+            "p2": "Paragraph 2: The Validation. Explicitly state that the institution is undoubtedly putting in great effort, but acknowledge that certain pressures (like parental expectations and national competition) are external and beyond the school's direct control.",
+            "p3": "Paragraph 3: The Strategic Opportunity. Frame this as a powerful opportunity for {school_name} to lead in holistic student development. Use language similar to: 'uniquely positioned at an ideal juncture,' 'investing in collaborative, structured support systems,' and 'transform potential challenges into growth opportunities.' Make it sound like a strategic, forward-thinking investment in the school's ecosystem that differentiates them as a leader in student-centric excellence."
         }}
         """
         response = client.models.generate_content(
@@ -428,17 +432,12 @@ def generate_insights_with_gemini(api_key, stats, school_name):
             config={'response_mime_type': 'application/json'}
         )
         import json
-        return json.loads(response.text)
-    except Exception:
-        return {
-            "p1": "Analysis generation failed.",
-            "p2": "Please check API Key.",
-            "key_finding": "Data Processing Complete",
-            "conclusion": "Review numerical data below.",
-            "quote": "Data speaks for itself.",
-            "strengths": "N/A",
-            "weaknesses": "N/A"
-        }
+        result = json.loads(response.text)
+        result["risk_band_label"] = risk_band
+        return result
+    except Exception as e:
+        print(f"API Error: {e}")
+        return {"risk_band_label": risk_band, "p1": "Error generating insights.", "p2": "", "p3": ""}
 
 def safe_generate_pdf(html_content):
     with tempfile.NamedTemporaryFile(delete=False, suffix=".html", mode="w", encoding="utf-8") as tf:
@@ -566,11 +565,12 @@ def generate_final_report(sdf, total, api_key, school_name, logo_file, output_fo
         "[EST_YEAR]": "2024",
         "[MODE]": "Online Survey",
         "[COUNT]": str(stats['count']),
-        "[EXEC_SUMMARY_P1]": ai_content.get("p1", ""),
-        "[EXEC_SUMMARY_P2]": ai_content.get("p2", ""),
-        "[EXEC_SUMMARY_KEY_FINDING]": ai_content.get("key_finding", ""),
-        "[EXEC_SUMMARY_CONCLUSION]": ai_content.get("conclusion", ""),
-        "[INSERT_KEY_QUOTE]": ai_content.get("quote", ""),
+        # --- NEW PARAGRAPH REPLACEMENTS ---
+        "[RISK_BAND_LABEL]": ai_content.get("risk_band_label", "Ecosystem Profile"),
+        "[EXEC_SUMMARY_PARAGRAPH_1]": ai_content.get("p1", ""),
+        "[EXEC_SUMMARY_PARAGRAPH_2]": ai_content.get("p2", ""),
+        "[EXEC_SUMMARY_PARAGRAPH_3]": ai_content.get("p3", ""),
+        # --------------------------------------
         "[INSERT_FULL_SCORING_TABLE_FROM_USER_PROMPT]": """
         <div class="grid grid-cols-5 gap-2 text-center text-xs font-medium text-gray-500">
             <div class="bg-green-100 p-2 rounded">20-39<br>Balanced</div>
@@ -593,9 +593,7 @@ def generate_final_report(sdf, total, api_key, school_name, logo_file, output_fo
         "[VAL_TOTAL]": str(stats['count']),
         "[PCT_ANXIETY]": str(stats['anxiety_pct']),
         "[PCT_PARENT_PRESSURE]": str(stats['parent_pressure_pct']),
-        "[PCT_SUPPORT]": str(stats['support_pct']),
-        "[INSIGHT_STRENGTHS]": ai_content.get("strengths", ""),
-        "[INSIGHT_WEAKNESS]": ai_content.get("weaknesses", "")
+        "[PCT_SUPPORT]": str(stats['support_pct'])
     }
 
     for key, val in replacements.items():
@@ -612,9 +610,7 @@ st.markdown("Generate Gold Standard Reports on Student Assessment Experience wit
 
 with st.sidebar:
     st.header("Settings")
-    # api_key = st.text_input("Gemini API Key", type="password")
     output_format = st.radio("Output Format", ["HTML (Fast)", "PDF (High Quality)"])
-    # A subtle status check so WE know it's working
     if api_key:
         st.caption("API Key securely loaded.")
     else:
@@ -649,7 +645,6 @@ if uploaded_file:
             st.write(f"**Found {total} Students.** Here is how they were scored:")
             st.dataframe(sdf[['total_score', 'category'] + sdf.columns.tolist()[8:13]])
             
-            # Allow Download of Processed Data
             output = BytesIO()
             with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
                 sdf.to_excel(writer, index=False)
