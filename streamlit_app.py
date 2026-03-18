@@ -15,11 +15,17 @@ from google import genai
 from dotenv import load_dotenv
 
 # --- PLAYWRIGHT INSTALL ---
-try:
-    from playwright.sync_api import sync_playwright
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "playwright"])
-subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"])
+from playwright.sync_api import sync_playwright
+
+@st.cache_resource
+def install_playwright():
+    import subprocess
+    import sys
+    # Install ONLY the browser binary. 
+    # We rely on packages.txt to handle the OS dependencies.
+    subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=True)
+
+install_playwright()
 
 # --- CONFIGURATION ---
 st.set_page_config(page_title="EDXSO Report Generator", layout="wide")
